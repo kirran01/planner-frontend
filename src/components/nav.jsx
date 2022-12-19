@@ -5,18 +5,17 @@ import { useContext } from 'react';
 
 const Nav = () => {
 const{user,isLoggedIn,logOut}=useContext(AuthContext);
-// console.log(user.name)
     return (
     <nav className='nav-main'>
       <ul>
         {
           isLoggedIn && (
             <>
-            <li>
-            <Link to="/">Home</Link>
+             <li>
+              <h4 style={{margin:'0'}}>{user.name}</h4>
             </li>
             <li>
-              <p>{user.name}</p>
+            <Link to="/">Home</Link>
             </li>
             <li>
               <button onClick={logOut}>Log Out</button>
@@ -28,13 +27,13 @@ const{user,isLoggedIn,logOut}=useContext(AuthContext);
           !isLoggedIn && (
             <>
             <li>
-            <Link to="/signup">Signup</Link>
+            <Link to="/">Home</Link>
             </li>
             <li>
             <Link to="/login">Login</Link>
             </li>
             <li>
-            <Link to="/">Home</Link>
+            <Link to="/signup">Signup</Link>
             </li>
             </>
           )

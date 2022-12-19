@@ -1,22 +1,53 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { useState } from 'react';
 
-const Signup = () => {
+function Signup(){
+    const navigate=useNavigate()
+    const[input, setInput]=useState({
+        email:'',
+        name:'',
+        password:''
+    })
+
+    const updateInput=(e)=>{
+    setInput({
+        ...input,[e.target.name]:e.target.value
+    })
+    }
+    const submitSignup=(e)=>{
+    e.preventDefault()
+    axios.post('http://localhost:3000/auth/signup',{
+        email:input.email,
+        name:input.name,
+        password:input.password
+    })
+    .then(axiosRes=>{
+        console.log(axiosRes.data)
+        navigate('/login')
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+    }
+
     return (
-        <div>
-    <form>
+    <div>
+    <form onSubmit={submitSignup}>
     <label htmlFor="username">Username</label>
       <br />
-      <input type="text" name="username" />
+      <input value={input.name} type="text" name="name" onChange={updateInput}/>
       <br />
       <label htmlFor="email">Email</label>
       <br />
-      <input type="text" name="username" />
+      <input value={input.email} type="text" name="email" onChange={updateInput}/>
       <br />
       <label htmlFor="password">Password</label>
       <br />
-      <input type="password" name="password" />
+      <input value={input.password} type="password" name="password" onChange={updateInput}/>
       <br />
-      <button type="submit">Sign up</button>
+      <button>Sign up</button>
     </form>
         </div>
     );
