@@ -1,3 +1,109 @@
 *{
   font-family: sans-serif;
 }
+
+.nav-main{
+  display: flex;
+  justify-content: center;
+  background-color: black;
+}
+.nav-main ul{
+  display: flex;
+  list-style: none;
+  padding: 0px;
+}
+
+.nav-main ul li{
+  margin: 10px;
+}
+
+.nav-main ul li :first-child{
+  text-decoration: none;
+  color: white;
+}
+
+.nav-main ul li :first-child:hover{
+  text-decoration: underline;
+}
+
+.nav-days{
+  background-color: #0a192f;
+  display: flex;
+  justify-content:center;
+}
+
+.nav-days ul{
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.nav-days ul li :first-child{
+  border: 1px solid white;
+  background-color: orange;
+  padding: 5px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  margin: 5px 10px 5px;
+}
+
+.nav-days ul li:first-child :hover{
+  cursor: pointer;
+}
+
+.day-card{
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin: 10px;
+
+}
+
+.day-card input{
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.day-card button{
+background-color: orange;
+color: white;
+border: 1px solid white;
+border-radius: 5px;
+padding: 5px 10px 5px;
+}
+
+.day-card button:hover{
+cursor: pointer;
+}
+
+
+.task-entries{
+  display: flex;
+  flex-direction: column;
+  margin:25px;
+}
+
+
+.task-entries input{
+  margin: 15px 5px 15px;
+  padding: 16px;
+}
+
+.home{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home button{
+  margin: 25px;
+  background-color: orange;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 5px 10px 5px;
+}
+
