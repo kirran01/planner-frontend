@@ -2,7 +2,6 @@ import React from 'react';
 import Day from '../components/day';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
-import cors from 'cors'
 
 
 const Home = () => {
@@ -11,7 +10,6 @@ const Home = () => {
     useEffect(()=>{
         axios.get('http://localhost:3000/days/all')
         .then(Days=>{
-            console.log(Days.data,"<---days")
         })
         .catch(err=>{
             console.log(err,"<---err")

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import cors from 'cors'
 
 //set DATE programmatically
 

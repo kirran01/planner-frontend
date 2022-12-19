@@ -4,7 +4,6 @@ import { Route, Routes} from 'react-router-dom'
 import Nav from './components/nav'
 import Home from './pages/home'
 import DaySelect from './components/dayselect'
-import Day from './components/day'
 import Login from './pages/login'
 import Signup from './pages/signup'
 
