@@ -17,6 +17,12 @@
   margin: 10px;
 }
 
+.nav-main ul li button{
+  background-color: orange;
+  border:1px solid white;
+  border-radius: 5px;
+}
+
 .nav-main ul li :first-child{
   text-decoration: none;
   color: white;
