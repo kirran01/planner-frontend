@@ -6,7 +6,6 @@ import axios from 'axios';
 
 const Home = () => {
     const[days, setDays]=useState([]);
-
     useEffect(()=>{
         axios.get('http://localhost:3000/days/all')
         .then(Days=>{
@@ -15,13 +14,9 @@ const Home = () => {
             console.log(err,"<---err")
         })
     },[])
-
-
     const addDay=()=>{
     setDays([...days,<Day/>])
     }
-
-
     return (
         <div className='home'>
             <button onClick={addDay}>+</button>

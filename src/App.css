@@ -64,6 +64,10 @@
   border-radius: 10px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 }
 
@@ -113,3 +117,21 @@ cursor: pointer;
   padding: 5px 10px 5px;
 }
 
+.event-form{
+  display: flex;
+  align-items: center;
+  margin: 5px;
+}
+
+.event-form input{
+  height:25px;
+  margin:4px 2px 4px;
+}
+
+.event-form-buttons{
+  display: flex;
+}
+
+.event-form-buttons button{
+  margin:2px;
+}

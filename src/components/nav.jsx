@@ -12,9 +12,7 @@ const{user,isLoggedIn,logOut}=useContext(AuthContext);
           isLoggedIn && (
             <>
              <li>
-              {/* <h4 style={{margin:'0'}}>{user.name}</h4> */}
               <Link to="/profile">{user.name}</Link>
-
             </li>
             <li>
             <Link to="/">Home</Link>
