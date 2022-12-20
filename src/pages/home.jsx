@@ -8,7 +8,8 @@ const Home = () => {
     const[days, setDays]=useState([]);
     useEffect(()=>{
         axios.get('http://localhost:3000/days/all')
-        .then(Days=>{
+        .then(foundDays=>{
+            console.log(foundDays.data,"<--days")
         })
         .catch(err=>{
             console.log(err,"<---err")
@@ -20,7 +21,9 @@ const Home = () => {
     return (
         <div className='home'>
             <button onClick={addDay}>+</button>
+            <div className='days'>
             {days}
+            </div>
         </div>
     );
 }

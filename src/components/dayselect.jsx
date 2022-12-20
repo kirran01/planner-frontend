@@ -9,7 +9,7 @@ const Dayselect = () => {
         <Link to="/">S</Link>
             </li>
         <li>
-        <Link to="/monday">M</Link>
+        <Link to="/">M</Link>
             </li>
         <li>
         <Link to="/">T</Link>
