@@ -5,11 +5,12 @@ import { AuthContext } from '../context/auth.context';
 const Profile = () => {
     const{user,isLoggedIn,logOut}=useContext(AuthContext)
     return (
-        <div>
+        <div className='profile'>
+            <div className='profile-info-card'>
             {
                 user&&(
                     <>
-                    <h1 style={{textAlign:'center'}}>Profile</h1>
+                    <h1>Profile</h1>
                     <h3>username: {user.name}</h3>
                     <h3>email:{user.email}</h3>
                     </>
@@ -22,6 +23,7 @@ const Profile = () => {
                     </>
                 )
             }
+            </div>
         </div>
     );
 }

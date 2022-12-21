@@ -18,7 +18,8 @@ const Day = (props) => {
     day:dateTag
   })
   .then(updatedDay=>{
-    console.log(updatedDay,"<--updated day")
+    console.log(updatedDay.data,"<--updated day")
+    setDateTag(updatedDay.data.day)
   })
   .catch(err=>{
     console.log(err)
@@ -49,7 +50,7 @@ const Day = (props) => {
             <div id="button-box">
             <button onClick={removeDay}>×</button>
             </div>
-            <h1 style={{textAlign:'center'}}>{(new Date(props.dayObj.day)).toDateString()}</h1>  
+            <h1 style={{textAlign:'center'}}>{(new Date(dateTag)).toDateString()}</h1>  
             <button type="" onClick={submitEditedDate}>✅</button>
             <input type="date" onChange={handleDayInputState}/>
              </>

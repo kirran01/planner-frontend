@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import e from 'cors';
 
 const Evententry = (props) => {
     const[eventInput,setEventInput]=useState(props.event.userEntry||"")
