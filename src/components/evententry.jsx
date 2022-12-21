@@ -40,8 +40,23 @@ const Evententry = (props) => {
 
     const updateEvent=(e)=>{
     e.preventDefault()
-    console.log("updateEvent")
+    console.log("initiate update")
     setEventInput("")
+    setIsEditing(true)
+    }
+
+    const submitEdit=(e)=>{
+    e.preventDefault()
+    axios.put(`http://localhost:3000/events/all/${props.event._id}`,{
+        userEntry:eventInput
+    })
+    .then(updatedEvent=>{
+        console.log(updatedEvent)
+    })
+    .catch(err=>{
+        console.log(err)
+    })
+
     }
 
     return (
@@ -51,6 +66,7 @@ const Evententry = (props) => {
                     <button onClick={submitEvent}>✔</button>
                     <button onClick={removeEvent}>✕</button>
                     <button onClick={updateEvent}>✎</button>
+                    <button onClick={submitEdit}>✅</button>
                 </div>
             </form>
     );
