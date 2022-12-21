@@ -1,10 +1,11 @@
 import React from 'react';
 import Day from '../components/day';
-import { useState,useEffect } from 'react';
+import { useState,useEffect,useContext } from 'react';
 import axios from 'axios';
-
+import { AuthContext } from '../context/auth.context';
 
 const Home = () => {
+    const {user,isLoggedIn, logOut} = useContext(AuthContext)
     const[allDays, setAllDays]=useState([])
     useEffect(()=>{
         axios.get('http://localhost:3000/days/all')
