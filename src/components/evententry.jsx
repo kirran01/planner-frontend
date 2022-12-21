@@ -51,6 +51,7 @@ const Evententry = (props) => {
         userEntry:eventInput
     })
     .then(updatedEvent=>{
+        setIsEditing(false)
         console.log(updatedEvent)
     })
     .catch(err=>{
@@ -61,13 +62,37 @@ const Evententry = (props) => {
 
     return (
             <form action="" className='event-form'>
+                {isEditing&&(
+                    <>
                 <input type="text" value={eventInput} onChange={handleEventInput}/>
+                <div className='event-form-buttons'>
+                <button onClick={submitEdit}>✅</button>
+                </div>
+                    </>
+                )}
+                {!isEditing&&(
+                    <>
+                {/* //user entry is only provided after submission, so before submission inputs dont have userentry */}
+                {props.event.userEntry?<input type="text" value={eventInput}/>:<input type="text" value={eventInput} onChange={handleEventInput}/>}
+                <div className='event-form-buttons'>
+                    {!props.event.userEntry?<button onClick={submitEvent}>✔</button>:<></>}
+                    <button onClick={removeEvent}>✕</button>
+                    <button onClick={updateEvent}>✎</button>
+                </div>
+                    </>
+                )}
+                
+                
+                
+                {/* <input type="text" value={eventInput} onChange={handleEventInput}/>
                 <div className='event-form-buttons'>
                     <button onClick={submitEvent}>✔</button>
                     <button onClick={removeEvent}>✕</button>
                     <button onClick={updateEvent}>✎</button>
                     <button onClick={submitEdit}>✅</button>
-                </div>
+                </div> */}
+
+
             </form>
     );
 }

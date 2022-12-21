@@ -4,6 +4,28 @@ import axios from 'axios';
 import Evententry from './evententry';
 
 const Day = (props) => {
+  const[dateTag,setDateTag]=useState(props.dayObj.day)
+  const[showEdit,setShowEdit]=useState(false)
+
+  const handleDayInputState=(e)=>{
+  e.preventDefault()
+  setDateTag(e.target.value)
+  }
+
+  const submitEditedDate=(e)=>{
+  e.preventDefault()
+  axios.put(`http://localhost:3000/days/all/${props.dayObj._id}`,{
+    day:dateTag
+  })
+  .then(updatedDay=>{
+    console.log(updatedDay,"<--updated day")
+  })
+  .catch(err=>{
+    console.log(err)
+  })
+
+  }
+
   const removeDay=(e)=>{
   e.preventDefault()
   console.log("removeDay")
@@ -17,26 +39,21 @@ const Day = (props) => {
   }
     return (
           <div className='day-card'>
-            {
-            !props.dayObj&&(
+            {!props.dayObj&&(
               <>
               <h1></h1>
-              <h2></h2>
               </>
-            )  
-            }
-            {
-              props.dayObj&&(
+            )}
+            {props.dayObj&&(
                 <> 
             <div id="button-box">
             <button onClick={removeDay}>×</button>
             </div>
-            <h1 style={{textAlign:'center'}}>{(new Date(props.dayObj.day)).toDateString()}</h1>
-            <h2 style={{textAlign:'center'}}>{props.dayObj.quote}</h2>
-           
-                </>
-              )
-            }
+            <h1 style={{textAlign:'center'}}>{(new Date(props.dayObj.day)).toDateString()}</h1>  
+            <button type="" onClick={submitEditedDate}>✅</button>
+            <input type="date" onChange={handleDayInputState}/>
+             </>
+              )}
             <button onClick={()=>{
               //we are passing the 'dayId' here in this parameter
               props.addEvent(props.dayObj._id)}}>＋</button>
@@ -49,13 +66,11 @@ const Day = (props) => {
               )
             })
             }
-            {
-            !props.dayObj.myEvents.length&&(
+            {!props.dayObj.myEvents.length&&(
               <>
               <p></p>
               </>
-            )  
-            }
+            )}
         </div>
     );
 }
