@@ -3,17 +3,44 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Evententry from './evententry';
 
-const Day = () => {
-    const[date,setDate]=useState('')
-    const[eventEntries, setEventEntries]=useState([<Evententry/>]);
-    const addTaskEntry=()=>{
-    setEventEntries([...eventEntries,<Evententry/>])
-    }
+const Day = (props) => {
     return (
-        <div className='day-card'>
-            <h1 style={{textAlign:'center'}}>{date}</h1>
-            <button onClick={addTaskEntry}>+</button>
-            {eventEntries}
+          <div className='day-card'>
+            {
+            !props.dayData&&(
+              <>
+              <h1></h1>
+              <h2></h2>
+              </>
+            )  
+            }
+            {
+              props.dayData&&(
+                <>
+            <h1 style={{textAlign:'center'}}>{(new Date(props.dayData.day)).toDateString()}</h1>
+            <h2 style={{textAlign:'center'}}>{props.dayData.quote}</h2>
+                </>
+              )
+            }
+            <button onClick={()=>{
+              //we are passing the 'dayId' here in this parameter
+              props.addEvent(props.dayData._id)}}>＋</button>
+            {
+            props.dayData.myEvents.map((event)=>{
+              return(    
+              <>
+              <Evententry event={event}/>
+              </>
+              )
+            })
+            }
+            {
+            !props.dayData.myEvents.length&&(
+              <>
+              <p></p>
+              </>
+            )  
+            }
         </div>
     );
 }

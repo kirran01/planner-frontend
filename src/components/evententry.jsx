@@ -2,14 +2,18 @@ import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
 
-const Evententry = () => {
-    const[eventInput,setEventInput]=useState('')
+const Evententry = (props) => {
+    const[eventInput,setEventInput]=useState(props.event.userEntry||"")
+
     const handleEventInput=(e)=>{
     setEventInput(e.target.value)
     }
     const submitEvent=(e)=>{
     e.preventDefault()
+    // const body=props.event
+    // body.userEntry=eventInput
     axios.post('http://localhost:3000/events/create-event',{
+    ...props.event,
     userEntry:eventInput
     })
     .then(newEvent=>{
