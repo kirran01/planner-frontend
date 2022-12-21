@@ -10,8 +10,6 @@ const Evententry = (props) => {
     }
     const submitEvent=(e)=>{
     e.preventDefault()
-    // const body=props.event
-    // body.userEntry=eventInput
     axios.post('http://localhost:3000/events/create-event',{
     ...props.event,
     userEntry:eventInput
@@ -24,8 +22,9 @@ const Evententry = (props) => {
     })
     }
 
-    const removeEvent=()=>{
-
+    const removeEvent=(e)=>{
+    e.preventDefault()
+    axios.delete('http://localhost:3000/events/all/:id')
     }
 
     return (
@@ -33,7 +32,7 @@ const Evententry = (props) => {
                 <input type="text" value={eventInput} onChange={handleEventInput}/>
                 <div className='event-form-buttons'>
                     <button onClick={submitEvent}>✔</button>
-                    <button>✕</button>
+                    <button onClick={removeEvent}>✕</button>
                     <button>✎</button>
                 </div>
             </form>

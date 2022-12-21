@@ -16,7 +16,7 @@ const Home = () => {
             console.log(err,"<---err")
         })
     },[])
-    const addDayData=()=>{
+    const addDay=()=>{
     setAllDays([...allDays, { day: new Date(), quote: '', myEvents: []}])
     }
     const addEvent = (dayId) => {
@@ -31,12 +31,12 @@ const Home = () => {
     }
     return (
         <div className='home'>
-            <button onClick={addDayData}>＋</button>
+            <button onClick={addDay}>＋</button>
             <div className='days'>
             {
             allDays.map((day)=>{
                 return (
-                <Day dayData={day} addEvent={addEvent} />
+                <Day dayObj={day} addEvent={addEvent} />
                 )
             })
             }
