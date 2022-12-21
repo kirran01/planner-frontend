@@ -1,9 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import e from 'cors';
 
 const Evententry = (props) => {
     const[eventInput,setEventInput]=useState(props.event.userEntry||"")
+    const[isEditing,setIsEditing]=useState(false)
 
     const handleEventInput=(e)=>{
     setEventInput(e.target.value)
@@ -36,13 +38,19 @@ const Evententry = (props) => {
     })
     }
 
+    const updateEvent=(e)=>{
+    e.preventDefault()
+    console.log("updateEvent")
+    setEventInput("")
+    }
+
     return (
             <form action="" className='event-form'>
                 <input type="text" value={eventInput} onChange={handleEventInput}/>
                 <div className='event-form-buttons'>
                     <button onClick={submitEvent}>✔</button>
                     <button onClick={removeEvent}>✕</button>
-                    <button>✎</button>
+                    <button onClick={updateEvent}>✎</button>
                 </div>
             </form>
     );

@@ -28,7 +28,9 @@ const Day = (props) => {
             {
               props.dayObj&&(
                 <> 
-            <button onClick={removeDay}>Delete</button>
+            <div id="button-box">
+            <button onClick={removeDay}>×</button>
+            </div>
             <h1 style={{textAlign:'center'}}>{(new Date(props.dayObj.day)).toDateString()}</h1>
             <h2 style={{textAlign:'center'}}>{props.dayObj.quote}</h2>
            

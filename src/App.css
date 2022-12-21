@@ -79,6 +79,14 @@
 
 }
 
+#button-box{
+  width: 100%;
+}
+
+.day-card h1{
+  margin: 10px 30px 10px;
+}
+
 .day-card input{
   border: 1px solid grey;
   border-radius: 5px;
