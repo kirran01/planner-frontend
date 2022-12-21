@@ -14,6 +14,10 @@ const Evententry = (props) => {
     axios.post('http://localhost:3000/events/create-event',{
     ...props.event,
     userEntry:eventInput
+    },{
+        headers:{
+            authorization: `Bearer ${localStorage.getItem('authToken')}`
+        }
     })
     .then(newEvent=>{
         console.log(newEvent,"<--axiosres")
