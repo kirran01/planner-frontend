@@ -125,6 +125,7 @@ cursor: pointer;
 }
 
 .home button{
+  cursor: pointer;
   margin: 25px;
   background-color: orange;
   color: white;
@@ -166,3 +167,94 @@ cursor: pointer;
   padding: 25px;
   margin: 25px;
 }
+
+.login-page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form{
+  margin: 20px;
+text-align: center;
+padding: 10px 25px 10px 25px;
+border-radius: 8px;
+background-color:white;
+box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
+}
+
+.login-form input{
+  margin: 10px;
+  border-radius: 5px;
+  min-height: 36px;
+  background-color: #ffffff;
+  border: 1px solid rgba(36,28,21,0.3);
+  transition: all 0.2s ease-in-out 0s;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: normal;
+  }
+  
+  .login-form button{
+      margin: 15px 10px 10px 10px;
+      border: 0;
+      outline: 0;
+      cursor: pointer;
+      color: white;
+      background-color: rgb(84, 105, 212);
+      box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 12%) 0px 1px 1px 0px, rgb(84 105 212) 0px 0px 0px 1px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(60 66 87 / 8%) 0px 2px 5px 0px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px;
+      display: inline-block;
+      min-height: 28px;
+      transition: background-color .24s,box-shadow .24s;
+  }
+
+
+  .signup-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .signup-form{
+    margin: 20px;
+    text-align: center;
+    padding: 10px 25px 10px 25px;
+    border-radius: 8px;
+    background-color:white;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
+  }
+
+  .signup-form input{
+    margin: 10px;
+    border-radius: 5px;
+    min-height: 36px;
+    background-color: #ffffff;
+    border: 1px solid rgba(36,28,21,0.3);
+    transition: all 0.2s ease-in-out 0s;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+  }
+
+  .signup-form button{
+    margin: 15px 10px 10px 10px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(84, 105, 212);
+    box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 12%) 0px 1px 1px 0px, rgb(84 105 212) 0px 0px 0px 1px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(60 66 87 / 8%) 0px 2px 5px 0px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px;
+    display: inline-block;
+    min-height: 28px;
+    transition: background-color .24s,box-shadow .24s;
+  }

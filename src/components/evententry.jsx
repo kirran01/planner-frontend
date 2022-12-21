@@ -10,7 +10,7 @@ const Evententry = (props) => {
     setEventInput(e.target.value)
     }
     const submitEvent=(e)=>{
-    e.preventDefault()
+    // e.preventDefault()
     axios.post('http://localhost:3000/events/create-event',{
     ...props.event,
     userEntry:eventInput
@@ -80,18 +80,6 @@ const Evententry = (props) => {
                 </div>
                     </>
                 )}
-                
-                
-                
-                {/* <input type="text" value={eventInput} onChange={handleEventInput}/>
-                <div className='event-form-buttons'>
-                    <button onClick={submitEvent}>✔</button>
-                    <button onClick={removeEvent}>✕</button>
-                    <button onClick={updateEvent}>✎</button>
-                    <button onClick={submitEdit}>✅</button>
-                </div> */}
-
-
             </form>
     );
 }

@@ -32,8 +32,9 @@ function Login(){
     }
 
     return (
-    <div>
-    <form onSubmit={submitLogin} className='login'>
+    <div className='login-page'>
+        <h1>Log In</h1>
+    <form onSubmit={submitLogin} className='login-form'>
       <label htmlFor="email">Email</label>
       <br/>
       <input type="text" value={inputState.email} name="email" onChange={handleInputState} />

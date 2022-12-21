@@ -33,8 +33,9 @@ function Signup(){
     }
 
     return (
-    <div>
-    <form onSubmit={submitSignup}>
+    <div className='signup-page'>
+        <h1>Sign up</h1>
+    <form className='signup-form' onSubmit={submitSignup}>
     <label htmlFor="username">Username</label>
       <br />
       <input value={input.name} type="text" name="name" onChange={updateInput}/>
