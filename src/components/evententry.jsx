@@ -23,8 +23,17 @@ const Evententry = (props) => {
     }
 
     const removeEvent=(e)=>{
+    //not sure why these are difernet in the console log?
+    // console.log(props.event._id)
+
     e.preventDefault()
-    axios.delete('http://localhost:3000/events/all/:id')
+    axios.delete(`http://localhost:3000/events/all/${props.event._id}`)
+    .then(deletedEvent=>{
+        // console.log(deletedEvent.data._id,"<--deletedId")
+    })
+    .catch(err=>{
+        console.log(err,"<--err")
+    })
     }
 
     return (
