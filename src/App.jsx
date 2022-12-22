@@ -7,6 +7,7 @@ import DaySelect from './components/dayselect'
 import Login from './pages/login'
 import Signup from './pages/signup'
 import Profile from './pages/profile'
+import Dayofweek from './pages/dayofweek'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<Signup/>}/>
       <Route path='/profile' element={<Profile/>}/>
+      <Route path='/day/:dayofweek' element={<Dayofweek/>}/>
       </Routes>  
     </div>
   )

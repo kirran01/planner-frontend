@@ -10,7 +10,6 @@ const Home = () => {
     useEffect(()=>{
         axios.get('http://localhost:3000/days/all')
         .then(foundDays=>{
-            console.log(foundDays.data,"<--days")
             setAllDays(foundDays.data)
         })
         .catch(err=>{
@@ -18,12 +17,13 @@ const Home = () => {
         })
     },[])
     const addDay=()=>{
+        //until a date is in the db, there is no ._id to associate the new event with resulting in a bug when making new events
+        //on a new day object 
     setAllDays([...allDays, { day: new Date(), quote: '', myEvents: []}])
     }
     const addEvent = (dayId) => {
     const mappedDays=allDays.map(day=>{
             if(day._id===dayId){
-                //the association of the event with the day
                 day.myEvents.push({userEntry:"",dayId})
             }
             return day

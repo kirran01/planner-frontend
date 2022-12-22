@@ -5,7 +5,6 @@ import Evententry from './evententry';
 
 const Day = (props) => {
   const[dateTag,setDateTag]=useState(props.dayObj.day)
-  const[showEdit,setShowEdit]=useState(false)
 
   const handleDayInputState=(e)=>{
   e.preventDefault()
@@ -28,11 +27,8 @@ const Day = (props) => {
   }
 
   const removeDay=(e)=>{
-  e.preventDefault()
-  console.log("removeDay")
   axios.delete(`http://localhost:3000/days/all/${props.dayObj._id}`)
   .then(deletedDay=>{
-    console.log(deletedDay,"<----deleted")
   })
   .catch(err=>{
     console.log(err,"<--err")
@@ -42,11 +38,10 @@ const Day = (props) => {
           <div className='day-card'>
             {!props.dayObj&&(
               <>
-              <h1></h1>
               </>
             )}
             {props.dayObj&&(
-                <> 
+             <> 
             <div id="button-box">
             <button onClick={removeDay}>×</button>
             </div>
@@ -69,7 +64,6 @@ const Day = (props) => {
             }
             {!props.dayObj.myEvents.length&&(
               <>
-              <p></p>
               </>
             )}
         </div>
