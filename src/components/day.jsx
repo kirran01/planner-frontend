@@ -6,11 +6,20 @@ import Evententry from './evententry';
 const Day = (props) => {
   const[dateTag,setDateTag]=useState(props.dayObj.day)
   const[isEditing,setIsEditing]=useState(false)
+  console.table(props.dayObj)
 
   const handleDayInputState=(e)=>{
   e.preventDefault()
   console.log(e.target.value)
   setDateTag(e.target.value + 'T00:00:00')
+  }
+
+  const editDate=()=>{
+    if(!isEditing){
+      setIsEditing(true)
+    }else{
+      setIsEditing(false)
+    }
   }
 
   const submitEditedDate=(e)=>{
@@ -20,6 +29,7 @@ const Day = (props) => {
   })
   .then(updatedDay=>{
     setDateTag(updatedDay.data.day)
+    setIsEditing(false)
   })
   .catch(err=>{
     console.log(err)
@@ -44,11 +54,20 @@ const Day = (props) => {
             {props.dayObj&&(
              <> 
             <div id="button-box">
-            <button onClick={removeDay}>×</button>
+            <form onSubmit={removeDay}>
+            <button>×</button>
+            </form>
             </div>
             <h1 style={{textAlign:'center'}}>{(new Date(dateTag)).toDateString()}</h1>  
-            <button type="" onClick={submitEditedDate}>✅</button>
+            {!props.dayObj.myEvents.length==0?<button onClick={editDate}>edit</button>:<></>}
+            {isEditing?(<>
+            <div className='date-edit'>
             <input type="date" onChange={handleDayInputState}/>
+            <button onClick={submitEditedDate}>✅</button>
+            </div>
+            </>):(<>
+            </>)}
+          
              </>
               )}
             <button onClick={()=>{

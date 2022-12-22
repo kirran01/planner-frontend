@@ -258,3 +258,45 @@ box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
     min-height: 28px;
     transition: background-color .24s,box-shadow .24s;
   }
+
+
+  .date-edit {
+  }
+
+  .date-edit input{
+    margin: 5px;
+    border-radius: 5px;
+    min-height: 36px;
+    background-color: #ffffff;
+    border: 1px solid rgba(36,28,21,0.3);
+    transition: all 0.2s ease-in-out 0s;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: normal;
+  }
+  .date-edit button{
+    margin: 5px;
+  }
+
+.days-of-week{
+  display: flex;
+  flex-direction: column;
+}
+
+.days-of-week h1{
+  text-align: center;
+}
+.all-days{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.day-of-week{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding:10px;
+  margin: 10px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
