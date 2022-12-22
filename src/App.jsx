@@ -1,4 +1,5 @@
-import { useState,useEffect } from 'react'
+import { useState,useEffect,useContext } from 'react'
+import { AuthContext } from './context/auth.context'
 import './App.css'
 import { Route, Routes} from 'react-router-dom'
 import axios from 'axios'
@@ -10,12 +11,16 @@ import Signup from './pages/signup'
 import Profile from './pages/profile'
 import Dayofweek from './pages/dayofweek'
 
+
 function App() {
+  const{user, isLoggedIn,logOut}=useContext(AuthContext)
+  // {user?console.log(user._id,"<-USERID3"):console.log("no user")}
 
   const[allDays, setAllDays]=useState([])
     useEffect(()=>{
-        axios.get('http://localhost:3000/days/all')
+        axios.get(`${import.meta.env.VITE_BACKEND_URL}/days/all`)
         .then(foundDays=>{
+            // const currentUsersDays=foundDays.data.filter(day=>console.log(day.owner,"OWNER"))
             setAllDays(foundDays.data)
         })
         .catch(err=>{

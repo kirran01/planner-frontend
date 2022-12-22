@@ -18,7 +18,7 @@ function Signup(){
     }
     const submitSignup=(e)=>{
     e.preventDefault()
-    axios.post('http://localhost:3000/auth/signup',{
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/signup`,{
         email:input.email,
         name:input.name,
         password:input.password

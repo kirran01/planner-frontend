@@ -16,7 +16,7 @@ function Login(){
 
     const submitLogin=(e)=>{
     e.preventDefault()
-    axios.post('http://localhost:3000/auth/login',{
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`,{
         email:inputState.email,
         password:inputState.password
     })

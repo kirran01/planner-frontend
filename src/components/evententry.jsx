@@ -11,8 +11,8 @@ const Evententry = (props) => {
     setEventInput(e.target.value)
     }
     const submitEvent=(e)=>{
-    e.preventDefault()
-    axios.post('http://localhost:3000/events/create-event',{
+    // e.preventDefault()
+    axios.post(`${import.meta.env.VITE_BACKEND_URL}/events/create-event`,{
     ...props.event,
     userEntry:eventInput
     },{
@@ -22,7 +22,6 @@ const Evententry = (props) => {
     })
     .then(newEvent=>{
     const userEntry=newEvent.data.userEntry
-    console.log(newEvent.data.userEntry,"newevent?")
     setEventInput(userEntry)
     setNewSubmission(true)
     })
@@ -32,7 +31,7 @@ const Evententry = (props) => {
     }
 
     const removeEvent=(e)=>{
-    axios.delete(`http://localhost:3000/events/all/${props.event._id}`)
+    axios.delete(`${import.meta.env.VITE_BACKEND_URL}/events/all/${props.event._id}`)
     .then(deletedEvent=>{
     })
     .catch(err=>{
@@ -48,7 +47,7 @@ const Evententry = (props) => {
 
     const submitEdit=(e)=>{
     e.preventDefault()
-    axios.put(`http://localhost:3000/events/all/${props.event._id}`,{
+    axios.put(`${import.meta.env.VITE_BACKEND_URL}/events/all/${props.event._id}`,{
         userEntry:eventInput
     })
     .then(updatedEvent=>{
@@ -75,7 +74,6 @@ const Evententry = (props) => {
                     <>
                 {props.event.userEntry?<input type="text" value={eventInput}/>:<input type="text" value={eventInput} onChange={handleEventInput}/>}
                 <div className='event-form-buttons'>
-                    {/* newsubmission is set to true once the check is clicked  */}
                     {!props.event.userEntry&&!newSubmission?<button onClick={submitEvent}>✔</button>:<></>}
                     <button onClick={removeEvent}>✕</button>
                     <button onClick={updateEvent}>✎</button>

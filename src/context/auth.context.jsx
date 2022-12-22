@@ -14,7 +14,7 @@ function AuthProviderWrapper(props){
     if(storedToken){
         
     axios.get(
-    `${API_URL}/auth/verify`,
+    `${import.meta.env.VITE_BACKEND_URL}/auth/verify`,
     {headers:{Authorization:`Bearer ${storedToken}`}}
     )
     .then((res)=>{

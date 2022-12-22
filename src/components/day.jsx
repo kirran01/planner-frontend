@@ -4,9 +4,9 @@ import axios from 'axios';
 import Evententry from './evententry';
 
 const Day = (props) => {
+  // {import.meta.env.VITE_BACKEND_URL}
   const[dateTag,setDateTag]=useState(props.dayObj.day)
   const[isEditing,setIsEditing]=useState(false)
-  console.table(props.dayObj)
 
   const handleDayInputState=(e)=>{
   e.preventDefault()
@@ -24,7 +24,7 @@ const Day = (props) => {
 
   const submitEditedDate=(e)=>{
   e.preventDefault()
-  axios.put(`http://localhost:3000/days/all/${props.dayObj._id}`,{
+  axios.put(`${import.meta.env.VITE_BACKEND_URL}/days/all/${props.dayObj._id}`,{
     day:dateTag
   })
   .then(updatedDay=>{
@@ -38,7 +38,7 @@ const Day = (props) => {
   }
 
   const removeDay=(e)=>{
-  axios.delete(`http://localhost:3000/days/all/${props.dayObj._id}`)
+  axios.delete(`${import.meta.env.VITE_BACKEND_URL}/days/all/${props.dayObj._id}`)
   .then(deletedDay=>{
   })
   .catch(err=>{
@@ -67,7 +67,6 @@ const Day = (props) => {
             </div>
             </>):(<>
             </>)}
-          
              </>
               )}
             <button onClick={()=>{
