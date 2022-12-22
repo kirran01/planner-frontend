@@ -5,10 +5,12 @@ import Evententry from './evententry';
 
 const Day = (props) => {
   const[dateTag,setDateTag]=useState(props.dayObj.day)
+  const[isEditing,setIsEditing]=useState(false)
 
   const handleDayInputState=(e)=>{
   e.preventDefault()
-  setDateTag(e.target.value)
+  console.log(e.target.value)
+  setDateTag(e.target.value + 'T00:00:00')
   }
 
   const submitEditedDate=(e)=>{
@@ -17,7 +19,6 @@ const Day = (props) => {
     day:dateTag
   })
   .then(updatedDay=>{
-    console.log(updatedDay.data,"<--updated day")
     setDateTag(updatedDay.data.day)
   })
   .catch(err=>{
