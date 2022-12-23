@@ -18,12 +18,15 @@ const Dayofweek = ({ allDays }) => {
             <div className='day-of-week'>
             <h2>{new Date(d.day).toDateString()}</h2>
             {console.log(d.myEvents)}
-            {/* {d.myEvents.map(event=>{
+            <div className='events-for-day'>
+            {d.myEvents.map(event=>{
+                return(
+             
                 <p>{event.userEntry}</p>
-            })} */}
-            <p>event1</p>
-            <p>event2</p>
-            <p>event3</p>
+           
+                )
+            })}
+            </div>
             </div>
           </>
           )}

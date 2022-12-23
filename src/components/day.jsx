@@ -7,6 +7,7 @@ const Day = (props) => {
   // {import.meta.env.VITE_BACKEND_URL}
   const[dateTag,setDateTag]=useState(props.dayObj.day)
   const[isEditing,setIsEditing]=useState(false)
+  const[showChange,setShowChange]=useState(false)
 
   const handleDayInputState=(e)=>{
   e.preventDefault()
@@ -23,7 +24,8 @@ const Day = (props) => {
   }
 
   const submitEditedDate=(e)=>{
-  e.preventDefault()
+  // e.preventDefault()
+  //dateTag is not set here. 
   axios.put(`${import.meta.env.VITE_BACKEND_URL}/days/all/${props.dayObj._id}`,{
     day:dateTag
   })
@@ -57,9 +59,9 @@ const Day = (props) => {
             <form onSubmit={removeDay}>
             <button>×</button>
             </form>
-            </div>
             <h1 style={{textAlign:'center'}}>{(new Date(dateTag)).toDateString()}</h1>  
-            {!props.dayObj.myEvents.length==0?<button onClick={editDate}>edit</button>:<></>}
+            </div>
+            {props.dayObj.myEvents.length>=1?<button onClick={editDate}>change</button>:<></>}
             {isEditing?(<>
             <div className='date-edit'>
             <input type="date" onChange={handleDayInputState}/>

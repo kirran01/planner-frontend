@@ -13,6 +13,7 @@ const Home = ({ allDays, setAllDays }) => {
     setAllDays([...allDays, { day: new Date(), quote: '', myEvents: []}])
     }
     const addEvent = (dayId) => {
+    
     const mappedDays=allDays.map(day=>{
             if(day._id===dayId){
                 day.myEvents.push({userEntry:"",dayId})
@@ -23,14 +24,20 @@ const Home = ({ allDays, setAllDays }) => {
     }
     return (
         <div className='home'>
-            <button onClick={addDay}>＋</button>
+           {isLoggedIn?<button id='add-event-button' onClick={addDay}>＋</button>:<></>}
+           {!isLoggedIn?<>
+<h2>log in to begin adding tasks</h2>
+           </>:<>
+           </>}
             <div className='days'>
+            
             {
             allDays.map((day)=>{
                 return (
                 <Day dayObj={day} addEvent={addEvent} />
-                )
+            )
             })
+         
             }
             </div>
         </div>
