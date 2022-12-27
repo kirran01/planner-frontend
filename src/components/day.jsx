@@ -4,14 +4,11 @@ import axios from 'axios';
 import Evententry from './evententry';
 
 const Day = (props) => {
-  // {import.meta.env.VITE_BACKEND_URL}
   const [dateTag, setDateTag] = useState(props.dayObj.day)
   const [isEditing, setIsEditing] = useState(false)
-  const [showChange, setShowChange] = useState(false)
-
+console.log(props.dayObj,"<--props.dayObj")
   const handleDayInputState = (e) => {
     e.preventDefault()
-    console.log(e.target.value)
     setDateTag(e.target.value + 'T00:00:00')
   }
 
@@ -25,22 +22,19 @@ const Day = (props) => {
 
   const submitEditedDate = (e) => {
     // e.preventDefault()
-    //dateTag is not set here. 
     axios.put(`${import.meta.env.VITE_BACKEND_URL}/days/all/${props.dayObj._id}`, {
       day: dateTag
     })
       .then(updatedDay => {
-        console.log('updatedDay', updatedDay)
-        const dayId = updatedDay.data._id;
+        const updatedDateId = updatedDay.data._id;
         // Update that particular day in the allDays array
         const allDays = props.allDays.map(day => {
-          if (day._id === dayId) {
+          if (day._id === updatedDateId) {
             return { ...day, day: dateTag };
           }
           return day;
         });
         props.setAllDays(allDays);
-        console.log('dateTag', dateTag);
         setDateTag(updatedDay.data.day)
         setIsEditing(false)
       })
@@ -83,14 +77,14 @@ const Day = (props) => {
         </>
       )}
       <button onClick={() => {
-        //we are passing the 'dayId' here in this parameter
+        //we are passing the 'updatedDateId' here in this parameter
         props.addEvent(props.dayObj._id)
       }}>＋</button>
       {
         props.dayObj.myEvents.map((event) => {
           return (
             <>
-              <Evententry event={event} />
+              <Evententry dayObj={props.dayObj} allDays={props.allDays} setAllDays={props.setAllDays} event={event} />
             </>
           )
         })

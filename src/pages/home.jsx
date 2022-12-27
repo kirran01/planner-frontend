@@ -13,10 +13,10 @@ const Home = ({ allDays, setAllDays }) => {
         setAllDays([...allDays, { day: new Date(), quote: '', myEvents: [] }])
     }
     const addEvent = (dayId) => {
-
         const mappedDays = allDays.map(day => {
             if (day._id === dayId) {
                 day.myEvents.push({ userEntry: "", dayId })
+                console.log(day.myEvents,"day.myEvents")
             }
             return day
         })
