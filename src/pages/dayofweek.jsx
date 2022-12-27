@@ -7,8 +7,6 @@ const Dayofweek = ({ allDays }) => {
     
     const filteredDays = allDays.filter(day => new Date(day.day).toDateString().substring(0,3).toLowerCase() === dayofweek.substring(0,3).toLowerCase())
     
-
-    // console.log(filteredDays[0].myEvents[0].userEntry,"filtereddays")
     return (
         <div className='days-of-week'>
             <h1>{'all '+dayofweek+'s'}</h1>

@@ -6,7 +6,6 @@ const Evententry = (props) => {
     const [eventInput, setEventInput] = useState(props.event.userEntry || "")
     const [isEditing, setIsEditing] = useState(false)
     const [newSubmission, setNewSubmission] = useState(false)
-    console.log(props.allDays,"<--props.alldays")
 
     const handleEventInput = (e) => {
         setEventInput(e.target.value)
@@ -23,6 +22,11 @@ const Evententry = (props) => {
         })
             .then(updatedDay => {
                 const mappedDays = props.allDays.map(day => {
+                    //day id undefined why do we retunr instead of adding to that day
+                    //is this basically saying if any one of the days doesnt have an id
+                    //return the updated day and set it to the state
+                    //when setting state how does it not overwrite the frontend
+                    //to only show 1 day?
                     if(day._id==undefined){
                     return updatedDay.data
                     }
@@ -33,6 +37,7 @@ const Evententry = (props) => {
                 })
                 props.setAllDays(mappedDays)
                 setNewSubmission(true)
+                props.setHasSubmitted(true)
             })
             .catch(err => {
                 console.log(err)
