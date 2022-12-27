@@ -21,16 +21,17 @@ const Evententry = (props) => {
                 authorization: `Bearer ${localStorage.getItem('authToken')}`
             }
         })
-            .then(newEvent => {
-                const userEntry = newEvent.data.userEntry
+            .then(updatedDay => {
                 const mappedDays = props.allDays.map(day => {
-                    if (newEvent.dayId === day._id) {
-                        return { ...day.myEvents, userEntry: userEntry }
+                    if(day._id==undefined){
+                    return updatedDay.data
+                    }
+                    if(day._id==updatedDay.data._id){
+                        return updatedDay.data
                     }
                     return day
                 })
                 props.setAllDays(mappedDays)
-                setEventInput(userEntry)
                 setNewSubmission(true)
             })
             .catch(err => {

@@ -16,7 +16,6 @@ const Home = ({ allDays, setAllDays }) => {
         const mappedDays = allDays.map(day => {
             if (day._id === dayId) {
                 day.myEvents.push({ userEntry: "", dayId })
-                console.log(day.myEvents,"day.myEvents")
             }
             return day
         })
@@ -34,7 +33,7 @@ const Home = ({ allDays, setAllDays }) => {
                 {
                     allDays.map((day) => {
                         return (
-                            <Day dayObj={day} addEvent={addEvent} allDays={allDays} setAllDays={setAllDays} />
+                            <Day dayObj={day} addEvent={()=>addEvent(day._id)} allDays={allDays} setAllDays={setAllDays} />
                         )
                     })
 
