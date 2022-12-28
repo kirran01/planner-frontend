@@ -38,13 +38,13 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <DaySelect />
+      <DaySelect allDays={allDays} setAllDays={setAllDays}/>
       <Routes>
         <Route path='/' element={<Home allDays={allDays} setAllDays={setAllDays} />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/profile' element={<Profile />} />
-        <Route path='/day/:dayofweek' element={<Dayofweek allDays={allDays} />} />
+        <Route path='/day/:dayofweek' element={<Dayofweek allDays={allDays} setAllDays={setAllDays} />} />
       </Routes>
     </div>
   )

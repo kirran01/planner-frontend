@@ -8,32 +8,19 @@ import { AuthContext } from '../context/auth.context';
 const numberToDay = { 1: 'monday', 2: 'tuesday', 3: 'wednesday', 4: 'thursday', 5: 'friday', 6: 'saturday', 0: 'sunday' }
 
 const Home = ({ allDays, setAllDays }) => {
-    const navigate=useNavigate()
+    const navigate = useNavigate()
     const { user, isLoggedIn, logOut } = useContext(AuthContext)
     //check the id of every day with an id and see if there is a user entry not just every day
     const [haveDays, setHaveDays] = useState(false)
     useEffect(() => {
         const today = new Date().getDay()
-        const day=numberToDay[today]
+        const day = numberToDay[today]
         navigate(`/day/${day}`)
         console.log(day, "day")
     }, [])
 
-    const addDay = () => {
-        setAllDays([...allDays, { day: new Date(), quote: '', myEvents: [] }])
-    }
-    const addEvent = (dayId) => {
-        const mappedDays = allDays.map(day => {
-            if (day._id === dayId) {
-                day.myEvents.push({ userEntry: "", dayId })
-            }
-            return day
-        })
-        setAllDays(mappedDays)
-    }
     return (
         <div className='home'>
-            {isLoggedIn ? <button id='add-event-button' onClick={addDay}>＋</button> : <></>}
             {!isLoggedIn ? <>
                 <h2>log in to begin adding tasks</h2>
             </> : <>

@@ -7,14 +7,7 @@ const Day = (props) => {
   const [dateTag, setDateTag] = useState(props.dayObj.day)
   const [isEditing, setIsEditing] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
-  console.log(props.allDays)
-  const hasId = props.allDays.map(d => {
-    if (d._id) {
-        return true
-    }
-    return false
-})
-console.log(hasId,"hasid")
+
   const handleDayInputState = (e) => {
     e.preventDefault()
     setDateTag(e.target.value + 'T00:00:00')
@@ -60,6 +53,7 @@ console.log(hasId,"hasid")
         console.log(err, "<--err")
       })
   }
+
   return (
     <div className='day-card'>
       {!props.dayObj && (
@@ -68,14 +62,15 @@ console.log(hasId,"hasid")
       )}
       {props.dayObj && (
         <>
+
+
           <div id="button-box">
             <form onSubmit={removeDay}>
               <button>×</button>
             </form>
+            <h2>{new Date(props.dayObj.day).toDateString()}</h2>
             {!hasSubmitted && (<><p>press '+' to add a task</p></>)}
-            {hasSubmitted && (<>
-              <h1 style={{ textAlign: 'center' }}>{(new Date(dateTag)).toDateString()}</h1>
-            </>)}
+
           </div>
           {hasSubmitted ? <button onClick={editDate}>change</button> : <></>}
           {isEditing ? (<>
@@ -99,10 +94,7 @@ console.log(hasId,"hasid")
           )
         })
       }
-      {!props.dayObj.myEvents.length && (
-        <>
-        </>
-      )}
+
     </div>
   );
 }
