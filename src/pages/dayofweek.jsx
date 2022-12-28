@@ -9,7 +9,7 @@ const Dayofweek = ({ allDays }) => {
     
     return (
         <div className='days-of-week'>
-            <h1>{'all '+dayofweek+'s'}</h1>
+            <h1>{dayofweek}</h1>
             <div className='all-days'>
             {filteredDays.map(d =>
             <>

@@ -1,15 +1,25 @@
 import React from 'react';
 import Day from '../components/day';
-import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/auth.context';
 
+const numberToDay = { 1: 'monday', 2: 'tuesday', 3: 'wednesday', 4: 'thursday', 5: 'friday', 6: 'saturday', 0: 'sunday' }
+
 const Home = ({ allDays, setAllDays }) => {
+    const navigate=useNavigate()
     const { user, isLoggedIn, logOut } = useContext(AuthContext)
+    //check the id of every day with an id and see if there is a user entry not just every day
+    const [haveDays, setHaveDays] = useState(false)
+    useEffect(() => {
+        const today = new Date().getDay()
+        const day=numberToDay[today]
+        navigate(`/day/${day}`)
+        console.log(day, "day")
+    }, [])
 
     const addDay = () => {
-        //until a date is in the db, there is no ._id to associate the new event with resulting in a bug when making new events
-        //on a new day object 
         setAllDays([...allDays, { day: new Date(), quote: '', myEvents: [] }])
     }
     const addEvent = (dayId) => {
@@ -33,7 +43,7 @@ const Home = ({ allDays, setAllDays }) => {
                 {
                     allDays.map((day) => {
                         return (
-                            <Day dayObj={day} addEvent={()=>addEvent(day._id)} allDays={allDays} setAllDays={setAllDays} />
+                            <Day dayObj={day} addEvent={() => addEvent(day._id)} allDays={allDays} setAllDays={setAllDays} />
                         )
                     })
 
