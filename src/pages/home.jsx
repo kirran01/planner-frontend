@@ -10,8 +10,6 @@ const numberToDay = { 1: 'monday', 2: 'tuesday', 3: 'wednesday', 4: 'thursday', 
 const Home = ({ allDays, setAllDays }) => {
     const navigate = useNavigate()
     const { user, isLoggedIn, logOut } = useContext(AuthContext)
-    //check the id of every day with an id and see if there is a user entry not just every day
-    const [haveDays, setHaveDays] = useState(false)
     useEffect(() => {
         const today = new Date().getDay()
         const day = numberToDay[today]

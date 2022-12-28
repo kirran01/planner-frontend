@@ -62,15 +62,12 @@ const Day = (props) => {
       )}
       {props.dayObj && (
         <>
-
-
-          <div id="button-box">
+          <div did="button-box">
             <form onSubmit={removeDay}>
               <button>×</button>
             </form>
             <h2>{new Date(props.dayObj.day).toDateString()}</h2>
             {!hasSubmitted && (<><p>press '+' to add a task</p></>)}
-
           </div>
           {hasSubmitted ? <button onClick={editDate}>change</button> : <></>}
           {isEditing ? (<>

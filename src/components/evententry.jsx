@@ -22,11 +22,6 @@ const Evententry = (props) => {
         })
             .then(updatedDay => {
                 const mappedDays = props.allDays.map(day => {
-                    //day id undefined why do we retunr instead of adding to that day
-                    //is this basically saying if any one of the days doesnt have an id
-                    //return the updated day and set it to the state
-                    //when setting state how does it not overwrite the frontend
-                    //to only show 1 day?
                     if(day._id==undefined){
                     return updatedDay.data
                     }

@@ -8,8 +8,6 @@ Modal.setAppElement('#root');
 const Dayselect = (props) => {
     const [err, setErr] = useState(null)
     const [dayInput, setDayInput] = useState("")
-    console.log(dayInput)
-    console.log(props.allDays)
     const handleDayInput = (e) => {
         setDayInput(e.target.value)
     }
@@ -35,7 +33,6 @@ const Dayselect = (props) => {
         const foundDay = props.allDays.find(d => {
             return new Date(d.day).toLocaleString('fr-CA', { timeZone: 'America/New_York' }).substring(0, 10) === dayInput
         })
-        console.log(foundDay)
         if (foundDay) {
             setErr("day already exists")
         } else {
@@ -43,8 +40,6 @@ const Dayselect = (props) => {
             props.setAllDays([...props.allDays, { day: new Date(dayInput + "T00:00"), quote: '', myEvents: [] }]);
             setIsOpen(false);
         }
-
-
     }
     return (
         <nav className='nav-days'>
