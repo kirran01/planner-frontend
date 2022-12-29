@@ -4,6 +4,7 @@ import axios from 'axios';
 import Evententry from './evententry';
 
 const Day = (props) => {
+  console.log('day props', props)
   const [dateTag, setDateTag] = useState(props.dayObj.day)
   const [isEditing, setIsEditing] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
@@ -85,9 +86,7 @@ const Day = (props) => {
       {
         props.dayObj.myEvents.map((event) => {
           return (
-            <>
-              <Evententry hasId={props.hasId} setHasSubmitted={setHasSubmitted} dayObj={props.dayObj} allDays={props.allDays} setAllDays={props.setAllDays} event={event} />
-            </>
+            <Evententry key={event._id} hasId={props.hasId} setHasSubmitted={setHasSubmitted} dayObj={props.dayObj} allDays={props.allDays} setAllDays={props.setAllDays} event={event} />
           )
         })
       }

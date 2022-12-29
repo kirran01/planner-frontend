@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
+import axios from 'axios';
 Modal.setAppElement('#root');
 
 
@@ -31,14 +32,28 @@ const Dayselect = (props) => {
     const addDay = (e) => {
         e.preventDefault()
         const foundDay = props.allDays.find(d => {
-            return new Date(d.day).toLocaleString('fr-CA', { timeZone: 'America/New_York' }).substring(0, 10) === dayInput
+            return new Date(d.day).toLocaleString('fr-CA').substring(0, 10) === dayInput
         })
         if (foundDay) {
             setErr("day already exists")
         } else {
             setErr("")
-            props.setAllDays([...props.allDays, { day: new Date(dayInput + "T00:00"), quote: '', myEvents: [] }]);
-            setIsOpen(false);
+            const storedToken = localStorage.getItem('authToken')
+            axios.post(`${import.meta.env.VITE_BACKEND_URL}/days/create-day`, {
+                day: dayInput + "T00:00",
+                quote: '',
+            }, { headers: { Authorization: `Bearer ${storedToken}` } })
+                .then(res => {
+                    console.log('day created', res.data);
+                    setIsOpen(false);
+                    props.setAllDays([...props.allDays, res.data]);
+                })
+                .catch(err => {
+                    console.log('err adding day', err)
+                    setIsOpen(false);
+                })
+
+
         }
     }
     return (

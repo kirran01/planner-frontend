@@ -3,6 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const Evententry = (props) => {
+    console.log('event entry props', props)
     const [eventInput, setEventInput] = useState(props.event.userEntry || "")
     const [isEditing, setIsEditing] = useState(false)
     const [newSubmission, setNewSubmission] = useState(false)
@@ -22,10 +23,7 @@ const Evententry = (props) => {
         })
             .then(updatedDay => {
                 const mappedDays = props.allDays.map(day => {
-                    if(day._id==undefined){
-                    return updatedDay.data
-                    }
-                    if(day._id==updatedDay.data._id){
+                    if (day._id == updatedDay.data._id) {
                         return updatedDay.data
                     }
                     return day
