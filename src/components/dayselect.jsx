@@ -42,7 +42,7 @@ const Dayselect = (props) => {
             setErr("")
             const storedToken = localStorage.getItem('authToken')
             axios.post(`${import.meta.env.VITE_BACKEND_URL}/days/create-day`, {
-                day: dayInput + "T00:00",
+                day: dayInput,
                 quote: '',
             }, { headers: { Authorization: `Bearer ${storedToken}` } })
                 .then(res => {
