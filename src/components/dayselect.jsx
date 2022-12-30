@@ -1,12 +1,14 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
 import axios from 'axios';
 Modal.setAppElement('#root');
+import { AuthContext } from '../context/auth.context';
 
 
 const Dayselect = (props) => {
+    const { user, isLoggedIn, logOut } = useContext(AuthContext)
     const [err, setErr] = useState(null)
     const [dayInput, setDayInput] = useState("")
     const handleDayInput = (e) => {
@@ -44,7 +46,6 @@ const Dayselect = (props) => {
                 quote: '',
             }, { headers: { Authorization: `Bearer ${storedToken}` } })
                 .then(res => {
-                    console.log('day created', res.data);
                     setIsOpen(false);
                     props.setAllDays([...props.allDays, res.data]);
                 })
@@ -52,16 +53,14 @@ const Dayselect = (props) => {
                     console.log('err adding day', err)
                     setIsOpen(false);
                 })
-
-
         }
     }
     return (
         <nav className='nav-days'>
             <ul>
-                <li>
+                {isLoggedIn && <li>
                     <button id='add-event-button' onClick={openModal}>＋</button>
-                </li>
+                </li>}
                 <li>
                     <Link to="/day/sunday">S</Link>
                 </li>

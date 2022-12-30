@@ -1,20 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom'
 import Day from '../components/day';
+import { AuthContext } from '../context/auth.context';
 
 const Dayofweek = ({ allDays, setAllDays }) => {
+    const { user, isLoggedIn, logOut } = useContext(AuthContext)
     const [filteredDays, setFilteredDays] = useState([]);
     const { dayofweek } = useParams();
 
-
     useEffect(() => {
-        console.log('running', dayofweek, allDays)
-
         const filteredDays = allDays.filter(day => {
-            console.log(new Date(day.day).toDateString().substring(0, 3).toLowerCase())
             return new Date(day.day).toDateString().substring(0, 3).toLowerCase() === dayofweek.substring(0, 3).toLowerCase()
         })
-        console.log('filterd days', filteredDays)
         setFilteredDays(filteredDays);
     }, [dayofweek, allDays])
 
@@ -30,11 +27,14 @@ const Dayofweek = ({ allDays, setAllDays }) => {
     return (
         <div className='days-of-week'>
             <h1>{dayofweek}</h1>
-            <div className='all-days'>
+            {isLoggedIn && (<div className='all-days'>
                 {filteredDays.map(d =>
                     <Day key={d._id} dayObj={d} addEvent={() => addEvent(d._id)} allDays={allDays} setAllDays={setAllDays} />
                 )}
-            </div>
+            </div>)}
+            {!isLoggedIn && <>
+                <p style={{textAlign:'center'}}>log in to begin adding tasks</p>
+            </>}
         </div>
     );
 }

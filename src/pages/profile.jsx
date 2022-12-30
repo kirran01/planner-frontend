@@ -11,7 +11,6 @@ const Profile = () => {
                 {
                     user && (
                         <>
-
                             <h3>username: {user.name}</h3>
                             <h3>email: {user.email}</h3>
                         </>

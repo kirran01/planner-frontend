@@ -14,24 +14,23 @@ const Home = ({ allDays, setAllDays }) => {
         const today = new Date().getDay()
         const day = numberToDay[today]
         navigate(`/day/${day}`)
-        console.log(day, "day")
     }, [])
 
     return (
         <div className='home'>
             {!isLoggedIn ? <>
                 <h2>log in to begin adding tasks</h2>
-            </> : <>
-            </>}
+            </>
+             : 
+            <></>
+            }
             <div className='days'>
-
                 {
                     allDays.map((day) => {
                         return (
                             <Day dayObj={day} addEvent={() => addEvent(day._id)} allDays={allDays} setAllDays={setAllDays} />
                         )
                     })
-
                 }
             </div>
         </div>

@@ -12,7 +12,6 @@ import Profile from './pages/profile'
 import Dayofweek from './pages/dayofweek'
 import Evententry from './components/evententry'
 
-
 function App() {
   const { user, isLoggedIn, logOut } = useContext(AuthContext)
   const [allDays, setAllDays] = useState([])
@@ -27,8 +26,8 @@ function App() {
           console.log(err, "<---err")
         })
     }
-
   }, [user])
+
   useEffect(() => {
     if (!isLoggedIn) {
       setAllDays([]);

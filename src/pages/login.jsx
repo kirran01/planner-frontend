@@ -21,7 +21,6 @@ function Login(){
         password:inputState.password
     })
     .then(loginRes=>{
-    console.log(loginRes.data)
     storeToken(loginRes.data.authToken)
     authenticateUser()
     navigate('/')

@@ -70,14 +70,6 @@ const Day = (props) => {
             <h2>{new Date(props.dayObj.day).toDateString()}</h2>
             {!hasSubmitted && (<><p>press '+' to add a task</p></>)}
           </div>
-          {hasSubmitted ? <button onClick={editDate}>change</button> : <></>}
-          {isEditing ? (<>
-            <div className='date-edit'>
-              <input type="date" onChange={handleDayInputState} />
-              <button onClick={submitEditedDate}>✅</button>
-            </div>
-          </>) : (<>
-          </>)}
         </>
       )}
       <button onClick={() => {

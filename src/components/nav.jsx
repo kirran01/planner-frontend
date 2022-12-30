@@ -15,7 +15,7 @@ const{user,isLoggedIn,logOut}=useContext(AuthContext);
               <Link to="/profile">{user.name}</Link>
             </li>
             <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Today</Link>
             </li>
             <li>
               <button onClick={logOut}>Log Out</button>
@@ -27,7 +27,7 @@ const{user,isLoggedIn,logOut}=useContext(AuthContext);
           !isLoggedIn && (
             <>
             <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Today</Link>
             </li>
             <li>
             <Link to="/login">Login</Link>
