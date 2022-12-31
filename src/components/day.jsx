@@ -48,6 +48,19 @@ const Day = (props) => {
   const removeDay = (e) => {
     axios.delete(`${import.meta.env.VITE_BACKEND_URL}/days/all/${props.dayObj._id}`)
       .then(deletedDay => {
+
+        const filteredForDelete = props.allDays.filter(d => {
+          console.log('day', d._id);
+          console.log('deletedDay', deletedDay);
+          if (d._id == props.dayObj._id) {
+            //return false to throw away
+            return false
+          } else {
+            return true
+          }
+        })
+        props.setAllDays(filteredForDelete)
+        console.log(filteredForDelete, "filterfd")
       })
       .catch(err => {
         console.log(err, "<--err")
@@ -62,9 +75,9 @@ const Day = (props) => {
       )}
       {props.dayObj && (
         <>
-          <form className='delete-button' onSubmit={removeDay}>
-            <button>×</button>
-          </form>
+
+          <button onClick={removeDay}>×</button>
+
           <div did="button-box">
 
             <h2>{new Date(props.dayObj.day).toDateString()}</h2>
