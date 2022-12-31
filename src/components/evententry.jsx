@@ -3,7 +3,6 @@ import { useState } from 'react';
 import axios from 'axios';
 
 const Evententry = (props) => {
-    console.log('event entry props', props)
     const [eventInput, setEventInput] = useState(props.event.userEntry || "")
     const [isEditing, setIsEditing] = useState(false)
     const [newSubmission, setNewSubmission] = useState(false)

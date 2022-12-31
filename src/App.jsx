@@ -11,6 +11,7 @@ import Signup from './pages/signup'
 import Profile from './pages/profile'
 import Dayofweek from './pages/dayofweek'
 import Evententry from './components/evententry'
+import All from './pages/all'
 
 function App() {
   const { user, isLoggedIn, logOut } = useContext(AuthContext)
@@ -19,6 +20,18 @@ function App() {
     if (user) {
       axios.get(`${import.meta.env.VITE_BACKEND_URL}/days/all`)
         .then(foundDays => {
+          console.log("boom")
+          const mostRecent = foundDays.data.sort((a, b) => {
+            let dateA = new Date(a.day)
+            let dateB = new Date(b.day)
+            if (dateA < dateB) {
+              return -1
+            } else if (dateA > dateB) {
+              return 1
+            } else {
+              return 0
+            }
+          })
           const filteredDaysByUser = foundDays.data.filter(day => day.owner === user._id);
           setAllDays(filteredDaysByUser);
         })
@@ -37,7 +50,7 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <DaySelect allDays={allDays} setAllDays={setAllDays}/>
+      <DaySelect allDays={allDays} setAllDays={setAllDays} />
       <Routes>
         <Route path='/' element={<Home allDays={allDays} setAllDays={setAllDays} />} />
         <Route path='/login' element={<Login />} />

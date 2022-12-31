@@ -10,12 +10,21 @@ const numberToDay = { 1: 'monday', 2: 'tuesday', 3: 'wednesday', 4: 'thursday', 
 const Home = ({ allDays, setAllDays }) => {
     const navigate = useNavigate()
     const { user, isLoggedIn, logOut } = useContext(AuthContext)
-    useEffect(() => {
-        const today = new Date().getDay()
-        const day = numberToDay[today]
-        navigate(`/day/${day}`)
-    }, [])
+    // useEffect(() => {
+    //     const today = new Date().getDay()
+    //     const day = numberToDay[today]
+    //     navigate(`/day/${day}`)
+    // }, [])
 
+    const addEvent = (dayId) => {
+        const mappedDays = allDays.map(day => {
+            if (day._id === dayId) {
+                day.myEvents.push({ userEntry: "", dayId })
+            }
+            return day
+        })
+        setAllDays(mappedDays)
+    }
     return (
         <div className='home'>
             {!isLoggedIn ? <>
@@ -28,7 +37,7 @@ const Home = ({ allDays, setAllDays }) => {
                 {
                     allDays.map((day) => {
                         return (
-                            <Day dayObj={day} addEvent={() => addEvent(day._id)} allDays={allDays} setAllDays={setAllDays} />
+                            <Day key={day._id} dayObj={day} addEvent={() => addEvent(day._id)} allDays={allDays} setAllDays={setAllDays} />
                         )
                     })
                 }

@@ -41,12 +41,14 @@ const Dayselect = (props) => {
         } else {
             setErr("")
             const storedToken = localStorage.getItem('authToken')
+            console.log('creating new date...', new Date(dayInput));
             axios.post(`${import.meta.env.VITE_BACKEND_URL}/days/create-day`, {
-                day: dayInput + "T00:00:00.000Z",
+                day: dayInput,
                 quote: '',
             }, { headers: { Authorization: `Bearer ${storedToken}` } })
                 .then(res => {
                     setIsOpen(false);
+                    //put filter logic in here too 
                     props.setAllDays([...props.allDays, res.data]);
                 })
                 .catch(err => {
@@ -92,7 +94,7 @@ const Dayselect = (props) => {
                 <button onClick={closeModal}>close</button>
                 <h2>Choose a day</h2>
                 <form onSubmit={addDay}>
-                    <input type="date" onChange={handleDayInput} />
+                    <input type="datetime-local" onChange={handleDayInput} />
                     <button>submit</button>
                 </form>
                 <p>{err}</p>

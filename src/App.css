@@ -324,6 +324,14 @@ flex-direction: column;
 align-items: flex-start;
 }
 
+.delete-button{
+width: 100%;
+}
+
+.delete-button button{
+  margin:5px;
+}
+
 #add-event-button{
 animation: flash linear 1s;
 }
@@ -340,3 +348,5 @@ animation: flash linear 1s;
     opacity: 1;
   }
 }
+
+

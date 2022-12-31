@@ -24,7 +24,6 @@ function Signup(){
         password:input.password
     })
     .then(axiosRes=>{
-        console.log(axiosRes.data)
         navigate('/login')
     })
     .catch(err=>{

@@ -4,7 +4,6 @@ import axios from 'axios';
 import Evententry from './evententry';
 
 const Day = (props) => {
-  console.log('day props', props)
   const [dateTag, setDateTag] = useState(props.dayObj.day)
   const [isEditing, setIsEditing] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
@@ -63,10 +62,11 @@ const Day = (props) => {
       )}
       {props.dayObj && (
         <>
+          <form className='delete-button' onSubmit={removeDay}>
+            <button>×</button>
+          </form>
           <div did="button-box">
-            <form onSubmit={removeDay}>
-              <button>×</button>
-            </form>
+
             <h2>{new Date(props.dayObj.day).toDateString()}</h2>
             {!hasSubmitted && (<><p>press '+' to add a task</p></>)}
           </div>
