@@ -46,9 +46,9 @@ const Day = (props) => {
   }
 
   const removeDay = (e) => {
+    console.log('deleting...')
     axios.delete(`${import.meta.env.VITE_BACKEND_URL}/days/all/${props.dayObj._id}`)
       .then(deletedDay => {
-
         const filteredForDelete = props.allDays.filter(d => {
           console.log('day', d._id);
           console.log('deletedDay', deletedDay);
@@ -69,17 +69,10 @@ const Day = (props) => {
 
   return (
     <div className='day-card'>
-      {!props.dayObj && (
-        <>
-        </>
-      )}
       {props.dayObj && (
         <>
-
           <button onClick={removeDay}>×</button>
-
-          <div did="button-box">
-
+          <div className="button-box">
             <h2>{new Date(props.dayObj.day).toDateString()}</h2>
             {!hasSubmitted && (<><p>press '+' to add a task</p></>)}
           </div>
