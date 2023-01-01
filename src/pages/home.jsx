@@ -28,7 +28,7 @@ const Home = ({ allDays, setAllDays }) => {
     return (
         <div className='home'>
             {!isLoggedIn ? <>
-                <h2>log in to begin adding tasks</h2>
+                <h2>log in or sign <i class="fa fa-volume-up" aria-hidden="true"></i> to begin adding tasks</h2>
             </>
              : 
             <></>
