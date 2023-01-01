@@ -17,6 +17,10 @@
   margin: 10px;
 }
 
+.nav-main ul li p{
+  margin: 0;
+}
+
 .nav-main ul li button{
   background-color: orange;
   border:1px solid white;

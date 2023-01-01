@@ -23,6 +23,7 @@ const Nav = () => {
             <>
               <li>
                 <p onClick={goToToday}>Today</p>
+          
               </li>
               <li>
                 <Link to="/profile">{user.name}</Link>
