@@ -5,7 +5,8 @@ import { useState } from 'react';
 
 function Signup() {
     const [signupErr, setSignupErr] = useState(false)
-    const navigate = useNavigate()
+    const [signupWait, setSignupWait] = useState()
+    const navigate = useNavigate(false)
     const [input, setInput] = useState({
         email: '',
         name: '',
@@ -19,6 +20,7 @@ function Signup() {
     }
     const submitSignup = (e) => {
         e.preventDefault()
+        setSignupWait(true)
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/signup`, {
             email: input.email,
             name: input.name,
@@ -39,6 +41,7 @@ function Signup() {
     return (
         <div className='signup-page'>
             <h1>Sign up</h1>
+            {signupWait && <p>if you are not redirected, please try again in 5 mins. Server may be sleeping</p>}
             {signupErr && <p>invalid credentials</p>}
             <form className='signup-form' onSubmit={submitSignup}>
                 <label htmlFor="username">Username</label>
