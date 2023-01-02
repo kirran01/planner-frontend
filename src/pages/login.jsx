@@ -6,6 +6,7 @@ import { AuthContext } from '../context/auth.context';
 function Login() {
     const { storeToken, authenticateUser } = useContext(AuthContext)
     const [loginErr, setLoginErr] = useState(false)
+    const [loginWait, setLoginWait] = useState(false)
     const navigate = useNavigate()
     const [inputState, setInputState] = useState({
         email: '',
@@ -16,13 +17,14 @@ function Login() {
     }
 
     const submitLogin = (e) => {
+        setLoginWait(true)
         e.preventDefault()
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, {
             email: inputState.email,
             password: inputState.password
         })
             .then(loginRes => {
-                setLoginErr(true)
+                setLoginWait(false)
                 storeToken(loginRes.data.authToken)
                 authenticateUser()
                 if (!loginRes.data.authToken) {
@@ -39,7 +41,8 @@ function Login() {
     return (
         <div className='login-page'>
             <h1>Log In</h1>
-            {loginErr && <p>If you are not redirected, please try again in one minute. render server needs to wake up</p>}
+            {loginWait&&<p>render server sleeping, please try again in a moment</p>}
+            {loginErr && <p>invalid credentials</p>}
             <form onSubmit={submitLogin} className='login-form'>
                 <label htmlFor="email">Email</label>
                 <br />

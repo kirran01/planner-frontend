@@ -19,14 +19,15 @@ function Signup() {
         })
     }
     const submitSignup = (e) => {
-        e.preventDefault()
         setSignupWait(true)
+        e.preventDefault()
         axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/signup`, {
             email: input.email,
             name: input.name,
             password: input.password
         })
             .then(axiosRes => {
+                setSignupWait(false)
                 console.log(axiosRes)
                 console.log(axiosRes.data)
                 console.log(axiosRes.data.authToken)
@@ -41,7 +42,7 @@ function Signup() {
     return (
         <div className='signup-page'>
             <h1>Sign up</h1>
-            {signupWait && <p>If you are not redirected, please try again in one minute. render server needs to wake up</p>}
+            {signupWait && <p>If you are not redirected, please try again in a moment. render server needs to wake up</p>}
             {signupErr && <p>invalid credentials</p>}
             <form className='signup-form' onSubmit={submitSignup}>
                 <label htmlFor="username">Username</label>
