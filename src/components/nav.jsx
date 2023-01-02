@@ -29,7 +29,7 @@ const Nav = () => {
                 <Link to="/profile">{user.name}</Link>
               </li>
               <li>
-                <Link to="/">Home</Link>
+                <Link to="/">All</Link>
               </li>
               <li>
                 <button onClick={logOut}>Log Out</button>

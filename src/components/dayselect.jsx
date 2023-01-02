@@ -41,7 +41,6 @@ const Dayselect = (props) => {
         } else {
             setErr("")
             const storedToken = localStorage.getItem('authToken')
-            console.log('creating new date...', new Date(dayInput));
             axios.post(`${import.meta.env.VITE_BACKEND_URL}/days/create-day`, {
                 day: dayInput,
                 quote: '',

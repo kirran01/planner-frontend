@@ -12,7 +12,8 @@ const Evententry = (props) => {
     }
     const submitEvent = (e) => {
         e.preventDefault()
-        axios.post(`${import.meta.env.VITE_BACKEND_URL}/events/create-event`, {
+        if(eventInput){
+            axios.post(`${import.meta.env.VITE_BACKEND_URL}/events/create-event`, {
             ...props.event,
             userEntry: eventInput
         }, {
@@ -33,7 +34,7 @@ const Evententry = (props) => {
             })
             .catch(err => {
                 console.log(err)
-            })
+            })}
     }
 
     const removeEvent = (e) => {
@@ -53,7 +54,7 @@ const Evententry = (props) => {
 
     const submitEdit = (e) => {
         e.preventDefault()
-        axios.put(`${import.meta.env.VITE_BACKEND_URL}/events/all/${props.event._id}`, {
+        if(eventInput){axios.put(`${import.meta.env.VITE_BACKEND_URL}/events/all/${props.event._id}`, {
             userEntry: eventInput
         })
             .then(updatedEvent => {
@@ -62,7 +63,7 @@ const Evententry = (props) => {
             })
             .catch(err => {
                 console.log(err)
-            })
+            })}
 
     }
 

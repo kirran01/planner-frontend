@@ -7,7 +7,6 @@ const Day = (props) => {
   const [dateTag, setDateTag] = useState(props.dayObj.day)
   const [isEditing, setIsEditing] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
-  console.log(new Date(props.dayObj.day).toString().slice(15, 21), "sliced")
   const timeCreated = new Date(props.dayObj.day).toString().slice(15, 21)
   const handleDayInputState = (e) => {
     e.preventDefault()
