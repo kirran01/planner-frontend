@@ -28,9 +28,6 @@ function Signup() {
         })
             .then(axiosRes => {
                 setSignupWait(false)
-                console.log(axiosRes)
-                console.log(axiosRes.data)
-                console.log(axiosRes.data.authToken)
                 navigate('/login')
             })
             .catch(err => {
@@ -44,7 +41,7 @@ function Signup() {
         <div className='signup-page'>
             <h1>Sign up</h1>
             {signupWait && <p>If you are not redirected, please try again in a moment. Render server needs to wake up</p>}
-            {signupErr && <p>internal error, invalid form input</p>}
+            {signupErr && <p>internal error or invalid form input</p>}
             <form className='signup-form' onSubmit={submitSignup}>
                 <label htmlFor="username">Username</label>
                 <br />
