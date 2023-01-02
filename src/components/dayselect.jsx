@@ -34,7 +34,7 @@ const Dayselect = (props) => {
     const addDay = (e) => {
         e.preventDefault()
         const foundDay = props.allDays.find(d => {
-            return new Date(d.day).toLocaleString('fr-CA').substring(0, 10) === dayInput
+            return new Date(d.day).toLocaleString('fr-CA').substring(0, 10) === dayInput.toLocaleString('fr-CA').substring(0, 10)
         })
         if (foundDay) {
             setErr("day already exists")
