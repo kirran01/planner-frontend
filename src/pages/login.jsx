@@ -41,8 +41,8 @@ function Login() {
     return (
         <div className='login-page'>
             <h1>Log In</h1>
-            {loginWait&&<p>render server sleeping, please try again in a moment</p>}
-            {loginErr && <p>invalid credentials</p>}
+            {loginWait && <p>render server sleeping, please try again in a moment</p>}
+            {loginErr && <p>internal error, invalid form input.</p>}
             <form onSubmit={submitLogin} className='login-form'>
                 <label htmlFor="email">Email</label>
                 <br />
