@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 function Signup() {
     const [signupErr, setSignupErr] = useState(false)
-    const [signupWait, setSignupWait] = useState()
+    const [signupWait, setSignupWait] = useState(false)
     const navigate = useNavigate(false)
     const [input, setInput] = useState({
         email: '',
@@ -41,7 +41,7 @@ function Signup() {
     return (
         <div className='signup-page'>
             <h1>Sign up</h1>
-            {signupWait && <p>if you are not redirected, please try again in 5 mins. Server may be sleeping</p>}
+            {signupWait && <p>If you are not redirected, please try again in one minute. render server needs to wake up</p>}
             {signupErr && <p>invalid credentials</p>}
             <form className='signup-form' onSubmit={submitSignup}>
                 <label htmlFor="username">Username</label>

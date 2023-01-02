@@ -22,6 +22,7 @@ function Login() {
             password: inputState.password
         })
             .then(loginRes => {
+                setLoginErr(true)
                 storeToken(loginRes.data.authToken)
                 authenticateUser()
                 if (!loginRes.data.authToken) {
@@ -38,7 +39,7 @@ function Login() {
     return (
         <div className='login-page'>
             <h1>Log In</h1>
-            {loginErr && <p>invalid credentials</p>}
+            {loginErr && <p>If you are not redirected, please try again in one minute. render server needs to wake up</p>}
             <form onSubmit={submitLogin} className='login-form'>
                 <label htmlFor="email">Email</label>
                 <br />

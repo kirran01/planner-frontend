@@ -12,6 +12,7 @@ import Profile from './pages/profile'
 import Dayofweek from './pages/dayofweek'
 import Evententry from './components/evententry'
 import All from './pages/all'
+import Foot from './components/foot'
 
 function App() {
   const { user, isLoggedIn, logOut } = useContext(AuthContext)
@@ -58,6 +59,7 @@ function App() {
         <Route path='/profile' element={<Profile />} />
         <Route path='/day/:dayofweek' element={<Dayofweek allDays={allDays} setAllDays={setAllDays} />} />
       </Routes>
+      <Foot/>
     </div>
   )
 }

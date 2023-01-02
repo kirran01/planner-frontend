@@ -342,6 +342,15 @@ animation: flash linear 1s;
 }
 
 
+.footer{
+  text-align: center;
+}
+
+.footer h4{
+ stroke-width: 50%;
+}
+
+
 @keyframes flash{
   0% {
     opacity: 1;
