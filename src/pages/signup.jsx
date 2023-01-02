@@ -6,7 +6,8 @@ import { useState } from 'react';
 function Signup() {
     const [signupErr, setSignupErr] = useState(false)
     const [signupWait, setSignupWait] = useState(false)
-    const navigate = useNavigate(false)
+    //changed from false?
+    const navigate = useNavigate()
     const [input, setInput] = useState({
         email: '',
         name: '',

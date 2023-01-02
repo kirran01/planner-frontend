@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import axios from 'axios';
 Modal.setAppElement('#root');
@@ -8,6 +8,7 @@ import { AuthContext } from '../context/auth.context';
 
 
 const Dayselect = (props) => {
+    const navigate = useNavigate()
     const { user, isLoggedIn, logOut } = useContext(AuthContext)
     const [err, setErr] = useState(null)
     const [dayInput, setDayInput] = useState("")
@@ -46,9 +47,32 @@ const Dayselect = (props) => {
                 quote: '',
             }, { headers: { Authorization: `Bearer ${storedToken}` } })
                 .then(res => {
+                    let newDay = new Date(res.data.day).toString().substring(0, 3)
+                    switch (newDay) {
+                        case 'Mon':
+                            newDay = "monday"
+                            break;
+                        case 'Tue':
+                            newDay = "tuesday"
+                            break;
+                        case 'Wed':
+                            newDay = "wednesday"
+                            break;
+                        case "Thu":
+                            newDay = "thursday"
+                            break;
+                        case 'Fri':
+                            newDay = "friday"
+                            break;
+                        case 'Sat':
+                            newDay = 'saturday'
+                            break;
+                        case 'Sun':
+                            newDay = 'sunday'
+                    }
                     setIsOpen(false);
-                    //put filter logic in here too 
                     props.setAllDays([...props.allDays, res.data]);
+                    navigate(`/day/${newDay}`)
                 })
                 .catch(err => {
                     console.log('err adding day', err)

@@ -46,7 +46,6 @@ const Day = (props) => {
   }
 
   const removeDay = (e) => {
-    console.log('deleting...')
     axios.delete(`${import.meta.env.VITE_BACKEND_URL}/days/all/${props.dayObj._id}`)
       .then(deletedDay => {
         const filteredForDelete = props.allDays.filter(d => {
@@ -57,7 +56,6 @@ const Day = (props) => {
           }
         })
         props.setAllDays(filteredForDelete)
-        console.log(filteredForDelete, "filterfd")
       })
       .catch(err => {
         console.log(err, "<--err")
