@@ -7,7 +7,8 @@ const Day = (props) => {
   const [dateTag, setDateTag] = useState(props.dayObj.day)
   const [isEditing, setIsEditing] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
-
+  console.log(new Date(props.dayObj.day).toString().slice(15, 21), "sliced")
+  const timeCreated = new Date(props.dayObj.day).toString().slice(15, 21)
   const handleDayInputState = (e) => {
     e.preventDefault()
     setDateTag(e.target.value + 'T00:00:00')
@@ -50,10 +51,7 @@ const Day = (props) => {
     axios.delete(`${import.meta.env.VITE_BACKEND_URL}/days/all/${props.dayObj._id}`)
       .then(deletedDay => {
         const filteredForDelete = props.allDays.filter(d => {
-          console.log('day', d._id);
-          console.log('deletedDay', deletedDay);
           if (d._id == props.dayObj._id) {
-            //return false to throw away
             return false
           } else {
             return true
@@ -74,7 +72,8 @@ const Day = (props) => {
           <button onClick={removeDay}>×</button>
           <div className="button-box">
             <h2>{new Date(props.dayObj.day).toDateString()}</h2>
-            {!hasSubmitted && (<><p>press '+' to add a task</p></>)}
+            <h5 id='time-created' style={{ textAlign: 'center' }}>created at:{timeCreated}</h5>
+            {!hasSubmitted && (<><p style={{ textAlign: 'center' }}>press '+' to add a task</p></>)}
           </div>
         </>
       )}

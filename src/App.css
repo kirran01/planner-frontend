@@ -336,18 +336,20 @@ width: 100%;
 .delete-button button{
   margin:5px;
 }
-
-#add-event-button{
-animation: flash linear 1s;
-}
-
-
 .footer{
   text-align: center;
 }
 
 .footer h4{
  stroke-width: 50%;
+}
+
+#add-event-button{
+animation: flash linear 1s;
+}
+
+#time-created{
+font-weight: lighter;
 }
 
 
