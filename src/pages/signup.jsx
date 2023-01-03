@@ -43,7 +43,7 @@ function Signup() {
         <div className='signup-page'>
             <h1>Sign up</h1>
             {signupWait && <>
-                <p>If you are not redirected, please wait for a minute, or try again in a moment. Render server needs to wake up</p>
+                <p>If you are not redirected, please allow up to a minute before trying again. Render server needs to wake up</p>
                 <div class="loader"></div>
             </>
             }
