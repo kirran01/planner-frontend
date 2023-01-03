@@ -10,11 +10,6 @@ const numberToDay = { 1: 'monday', 2: 'tuesday', 3: 'wednesday', 4: 'thursday', 
 const Home = ({ allDays, setAllDays }) => {
     const navigate = useNavigate()
     const { user, isLoggedIn, logOut } = useContext(AuthContext)
-    // useEffect(() => {
-    //     const today = new Date().getDay()
-    //     const day = numberToDay[today]
-    //     navigate(`/day/${day}`)
-    // }, [])
 
     const addEvent = (dayId) => {
         const mappedDays = allDays.map(day => {

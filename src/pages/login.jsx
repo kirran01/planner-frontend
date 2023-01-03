@@ -38,10 +38,15 @@ function Login() {
             })
     }
 
-    return ( 
+    return (
         <div className='login-page'>
             <h1>Log In</h1>
-            {loginWait && <p>If you are not redirected, please wait or try again in a moment. Render server needs to wake up</p>}
+            {loginWait &&
+                <>
+                    <p>If you are not redirected, please wait or try again in a moment. Render server needs to wake up</p>
+                    <div class="loader"></div>
+                </>
+            }
             {loginErr && <p>internal error, invalid form input.</p>}
             <form onSubmit={submitLogin} className='login-form'>
                 <label htmlFor="email">Email</label>

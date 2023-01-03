@@ -42,7 +42,12 @@ function Signup() {
     return (
         <div className='signup-page'>
             <h1>Sign up</h1>
-            {signupWait && <p>If you are not redirected, please wait or try again in a moment. Render server needs to wake up</p>}
+            {signupWait && <>
+                <p>If you are not redirected, please wait or try again in a moment. Render server needs to wake up</p>
+                <div class="loader"></div>
+            </>
+            }
+
             {signupErr && <p>internal error or invalid form input</p>}
             <form className='signup-form' onSubmit={submitSignup}>
                 <label htmlFor="username">Username</label>
