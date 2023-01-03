@@ -17,13 +17,6 @@ const Nav = () => {
 
   return (
     <nav className='nav-main'>
-      <div className='nav-title'>
-      <ul>
-        <li>
-          <p>Task Manager</p>
-        </li>
-      </ul>
-      </div>
       <div>
       <ul>
         {
