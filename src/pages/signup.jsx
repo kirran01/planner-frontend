@@ -28,7 +28,9 @@ function Signup() {
             password: input.password
         })
             .then(axiosRes => {
+                console.log(axiosRes, "axires")
                 setSignupWait(false)
+                setSignupErr(true)
                 navigate('/login')
             })
             .catch(err => {
