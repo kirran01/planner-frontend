@@ -27,6 +27,7 @@ const Dayofweek = ({ allDays, setAllDays }) => {
     return (
         <div className='days-of-week'>
             <h1>{dayofweek}</h1>
+            {isLoggedIn && !allDays.length ? <p style={{textAlign:'center'}}>press the + button to add your first day</p> : <></>}
             {isLoggedIn && (<div className='all-days'>
                 {filteredDays.map(d =>
                     <Day key={d._id} dayObj={d} addEvent={() => addEvent(d._id)} allDays={allDays} setAllDays={setAllDays} />

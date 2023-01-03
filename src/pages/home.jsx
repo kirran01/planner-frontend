@@ -8,6 +8,7 @@ import { AuthContext } from '../context/auth.context';
 const numberToDay = { 1: 'monday', 2: 'tuesday', 3: 'wednesday', 4: 'thursday', 5: 'friday', 6: 'saturday', 0: 'sunday' }
 
 const Home = ({ allDays, setAllDays }) => {
+    console.log(allDays, "allDays")
     const navigate = useNavigate()
     const { user, isLoggedIn, logOut } = useContext(AuthContext)
 
@@ -25,9 +26,10 @@ const Home = ({ allDays, setAllDays }) => {
             {!isLoggedIn ? <>
                 <h2>log in or sign up to begin adding tasks</h2>
             </>
-             : 
-            <></>
+                :
+                <></>
             }
+            {isLoggedIn && !allDays.length ? <p>press the + button to add your first day</p> : <></>}
             <div className='days'>
                 {
                     allDays.map((day) => {
