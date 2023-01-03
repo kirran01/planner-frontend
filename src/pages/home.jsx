@@ -24,7 +24,7 @@ const Home = ({ allDays, setAllDays }) => {
     return (
         <div className='home'>
             {!isLoggedIn ? <>
-                <h2>log in or sign up to begin adding tasks</h2>
+                <h2 style={{ textAlign: 'center' }}>log in or sign up to begin adding tasks</h2>
             </>
                 :
                 <></>
