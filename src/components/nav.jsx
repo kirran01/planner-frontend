@@ -17,13 +17,20 @@ const Nav = () => {
 
   return (
     <nav className='nav-main'>
+      <div className='nav-title'>
+      <ul>
+        <li>
+          <p>Task Manager</p>
+        </li>
+      </ul>
+      </div>
+      <div>
       <ul>
         {
           isLoggedIn && (
             <>
               <li>
                 <p onClick={goToToday}>Today</p>
-          
               </li>
               <li>
                 <Link to="/profile">{user.name}</Link>
@@ -53,6 +60,7 @@ const Nav = () => {
           )
         }
       </ul>
+      </div>
     </nav>
   );
 }

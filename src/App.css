@@ -278,9 +278,6 @@ box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
   }
 
 
-  .date-edit {
-  }
-
   .date-edit input{
     margin: 5px;
     border-radius: 5px;
@@ -344,6 +341,11 @@ width: 100%;
  stroke-width: 50%;
 }
 
+.nav-title{
+  position: absolute;
+  right: 85%;
+}
+
 #add-event-button{
 animation: flash linear 1s;
 }
@@ -378,4 +380,15 @@ font-weight: lighter;
   }
 }
 
+@media(max-width:550px){
+  .nav-title{
+    display: none;
+  }
+}
 
+
+@media(max-width:820px){
+  .nav-title{
+    right:80%
+  }
+}

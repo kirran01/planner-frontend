@@ -21,7 +21,6 @@ function App() {
     if (user) {
       axios.get(`${import.meta.env.VITE_BACKEND_URL}/days/all`)
         .then(foundDays => {
-          console.log("boom")
           const mostRecent = foundDays.data.sort((a, b) => {
             let dateA = new Date(a.day)
             let dateB = new Date(b.day)
