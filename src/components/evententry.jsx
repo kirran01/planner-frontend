@@ -12,29 +12,30 @@ const Evententry = (props) => {
     }
     const submitEvent = (e) => {
         e.preventDefault()
-        if(eventInput){
+        if (eventInput) {
             axios.post(`${import.meta.env.VITE_BACKEND_URL}/events/create-event`, {
-            ...props.event,
-            userEntry: eventInput
-        }, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('authToken')}`
-            }
-        })
-            .then(updatedDay => {
-                const mappedDays = props.allDays.map(day => {
-                    if (day._id == updatedDay.data._id) {
-                        return updatedDay.data
-                    }
-                    return day
-                })
-                props.setAllDays(mappedDays)
-                setNewSubmission(true)
-                props.setHasSubmitted(true)
+                ...props.event,
+                userEntry: eventInput
+            }, {
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('authToken')}`
+                }
             })
-            .catch(err => {
-                console.log(err)
-            })}
+                .then(updatedDay => {
+                    const mappedDays = props.allDays.map(day => {
+                        if (day._id == updatedDay.data._id) {
+                            return updatedDay.data
+                        }
+                        return day
+                    })
+                    props.setAllDays(mappedDays)
+                    setNewSubmission(true)
+                    props.setHasSubmitted(true)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
     }
 
     const removeEvent = (e) => {
@@ -54,16 +55,18 @@ const Evententry = (props) => {
 
     const submitEdit = (e) => {
         e.preventDefault()
-        if(eventInput){axios.put(`${import.meta.env.VITE_BACKEND_URL}/events/all/${props.event._id}`, {
-            userEntry: eventInput
-        })
-            .then(updatedEvent => {
-                setIsEditing(false)
-                console.log(updatedEvent)
+        if (eventInput) {
+            axios.put(`${import.meta.env.VITE_BACKEND_URL}/events/all/${props.event._id}`, {
+                userEntry: eventInput
             })
-            .catch(err => {
-                console.log(err)
-            })}
+                .then(updatedEvent => {
+                    setIsEditing(false)
+                    console.log(updatedEvent)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
 
     }
 

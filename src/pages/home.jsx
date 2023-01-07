@@ -29,7 +29,7 @@ const Home = ({ allDays, setAllDays }) => {
                 :
                 <></>
             }
-            {isLoggedIn && !allDays.length ? <p style={{ textAlign: 'center' }}>press the + button to add your first Day. Once you've made your first day, you can begin adding tasks</p> : <></>}
+            {isLoggedIn && !allDays.length ? <p style={{ textAlign: 'center' }}>Welcome, {user.name}! press the + button to add your first Day. Once you've made your first day, you can begin adding tasks</p> : <></>}
             <div className='days'>
                 {
                     allDays.map((day) => {
