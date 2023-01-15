@@ -29,6 +29,7 @@ const Evententry = (props) => {
                         return day
                     })
                     props.setAllDays(mappedDays)
+                    props.setPressedPlus(false)
                     setNewSubmission(true)
                     props.setHasSubmitted(true)
                 })

@@ -5,9 +5,16 @@ import Evententry from './evententry';
 
 const Day = (props) => {
   const [dateTag, setDateTag] = useState(props.dayObj.day)
+  const[pressedPlus,setPressedPlus]=useState(false)
   const [isEditing, setIsEditing] = useState(false)
   const [hasSubmitted, setHasSubmitted] = useState(false)
   const timeCreated = new Date(props.dayObj.day).toString().slice(15, 21)
+
+
+  const handlePlus=()=>{
+    setPressedPlus(true)
+  }
+
   const handleDayInputState = (e) => {
     e.preventDefault()
     setDateTag(e.target.value + 'T00:00:00')
@@ -74,13 +81,14 @@ const Day = (props) => {
           </div>
         </>
       )}
-      <button onClick={() => {
+     {!pressedPlus&& <button onClick={() => {
         props.addEvent(props.dayObj._id)
-      }}>＋</button>
+        setPressedPlus(true)
+      }}>＋</button>}
       {
         props.dayObj.myEvents.map((event) => {
           return (
-            <Evententry key={event._id} hasId={props.hasId} setHasSubmitted={setHasSubmitted} dayObj={props.dayObj} allDays={props.allDays} setAllDays={props.setAllDays} event={event} />
+            <Evententry setPressedPlus={setPressedPlus} key={event._id} hasId={props.hasId} setHasSubmitted={setHasSubmitted} dayObj={props.dayObj} allDays={props.allDays} setAllDays={props.setAllDays} event={event} />
           )
         })
       }
