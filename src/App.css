@@ -1,5 +1,5 @@
 *{
-  font-family: sans-serif;
+font-family: Arial, Helvetica, sans-serif;
 }
 
 .nav-main{
@@ -266,7 +266,7 @@ box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
     outline: 0;
     cursor: pointer;
     color: white;
-    background-color: rgb(84, 105, 212);
+    background-color: rgb(77, 101, 219);
     box-shadow: rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 12%) 0px 1px 1px 0px, rgb(84 105 212) 0px 0px 0px 1px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(0 0 0 / 0%) 0px 0px 0px 0px, rgb(60 66 87 / 8%) 0px 2px 5px 0px;
     border-radius: 4px;
     font-size: 14px;
@@ -352,6 +352,19 @@ animation: flash linear 1s;
 
 #time-created{
 font-weight: lighter;
+}
+
+.user-info{
+justify-content:center;
+}
+
+.user-info button{
+padding:10px 15px 10px;
+border:none;
+color: white;
+border-radius:10px;
+margin:5px;
+background-color: rgb(126, 140, 210);
 }
 
 .loader {

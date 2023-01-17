@@ -8,6 +8,8 @@ const numberToDay = { 1: 'monday', 2: 'tuesday', 3: 'wednesday', 4: 'thursday', 
 
 const Nav = () => {
   const navigate = useNavigate()
+  const today = new Date().getDay()
+  const day = numberToDay[today]
   const { user, isLoggedIn, logOut } = useContext(AuthContext);
   const goToToday = () => {
     const today = new Date().getDay()
@@ -18,41 +20,41 @@ const Nav = () => {
   return (
     <nav className='nav-main'>
       <div>
-      <ul>
-        {
-          isLoggedIn && (
-            <>
-              <li>
-                <p onClick={goToToday}>Today</p>
-              </li>
-              <li>
-                <Link to="/profile">{user.name}</Link>
-              </li>
-              <li>
-                <Link to="/">All</Link>
-              </li>
-              <li>
-                <button onClick={logOut}>Log Out</button>
-              </li>
-            </>
-          )
-        }
-        {
-          !isLoggedIn && (
-            <>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/signup">Signup</Link>
-              </li>
-            </>
-          )
-        }
-      </ul>
+        <ul>
+          {
+            isLoggedIn && (
+              <>
+                <li>
+                  <p style={{ cursor: 'pointer' }} onClick={goToToday}>Today ({day})</p>
+                </li>
+                <li>
+                  <Link to="/profile">{user.name}</Link>
+                </li>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <button onClick={logOut}>Log Out</button>
+                </li>
+              </>
+            )
+          }
+          {
+            !isLoggedIn && (
+              <>
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/login">Login</Link>
+                </li>
+                <li>
+                  <Link to="/signup">Signup</Link>
+                </li>
+              </>
+            )
+          }
+        </ul>
       </div>
     </nav>
   );
